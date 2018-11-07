@@ -1,0 +1,11 @@
+<button routerLink="/owners">Back</button>
+
+<form [formGroup]="ownerForm" (ngSubmit)="save()">
+
+  <label>
+    Owner Name:
+    <input type="text" formControlName="name">
+  </label>
+
+  <button type="submit">Save</button>
+</form>

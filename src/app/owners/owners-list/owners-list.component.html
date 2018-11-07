@@ -1,0 +1,10 @@
+<ul>
+  <li *ngFor="let owner of owners">
+    <a routerLink="/owners/{{owner.id}}">
+      {{owner.name}}
+    </a>
+    <button routerLink="/owner-update/{{owner.id}}">Update</button>
+    <button (click)="delete(owner.id)">Delete</button>
+  </li>
+</ul>
+<button routerLink="/owner-add">Add Owner</button>
