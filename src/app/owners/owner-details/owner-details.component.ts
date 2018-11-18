@@ -17,7 +17,10 @@ export class OwnerDetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.owner = this.ownerService.getOwnersById(id);
+    this.ownerService.getOwnersById(id)
+      .subscribe(ownerFromRest => {
+        this.owner = ownerFromRest;
+      });
   }
 
 }

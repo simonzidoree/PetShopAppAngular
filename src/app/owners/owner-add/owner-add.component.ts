@@ -23,8 +23,9 @@ export class OwnerAddComponent implements OnInit {
 
   save() {
     const owner = this.ownerForm.value;
-    this.ownerService.addOwners(owner);
-    this.ownerForm.reset();
-    this.router.navigateByUrl('/owners');
+    this.ownerService.addOwners(owner)
+      .subscribe(() => {
+        this.router.navigateByUrl('/owners');
+      });
   }
 }

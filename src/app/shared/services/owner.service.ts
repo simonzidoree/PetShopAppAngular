@@ -7,36 +7,28 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class OwnerService {
-
-  owners: Owner[] = [];
-  id = 1;
+  apiUrl = 'https://testwebapi-zido.azurewebsites.net/api/owners';
 
   constructor(private http: HttpClient) {
-    this.owners = [
-      {id: this.id++, name: 'John'},
-      {id: this.id++, name: 'Bob'}];
   }
 
   getOwners(): Observable<Owner[]> {
-    return this.http.get<Owner[]>('https://testwebapi-zido.azurewebsites.net/api/owners');
+    return this.http.get<Owner[]>(this.apiUrl);
   }
 
-  addOwners(owner: Owner) {
-    owner.id = this.id++;
-    this.owners.push(owner);
+  addOwners(owner: Owner): Observable<Owner> {
+    return this.http.post<Owner>(this.apiUrl, owner);
   }
 
-  updateOwner(owner: Owner) {
-    const ownerToUpdate = this.owners.find(o => owner.id === o.id);
-    const index = this.owners.indexOf(ownerToUpdate);
-    this.owners[index] = owner;
+  updateOwner(owner: Owner): Observable<Owner> {
+    return this.http.put<Owner>(this.apiUrl + '/' + owner.id, owner);
   }
 
-  deleteOwner(id: number) {
-    this.owners = this.owners.filter(o => o.id !== id);
+  deleteOwner(id: number): Observable<any> {
+    return this.http.delete(this.apiUrl + '/' + id);
   }
 
-  getOwnersById(id: number) {
-    return this.owners.find(o => o.id === id);
+  getOwnersById(id: number): Observable<Owner> {
+    return this.http.get<Owner>(this.apiUrl + '/' + id);
   }
 }

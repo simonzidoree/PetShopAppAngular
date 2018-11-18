@@ -23,17 +23,21 @@ export class OwnerUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('id');
-    const owner = this.ownerService.getOwnersById(this.id);
-    this.ownerForm.patchValue({
-      name: owner.name
-    });
+
+    this.ownerService.getOwnersById(this.id)
+      .subscribe(ownerFromRest => {
+        this.ownerForm.patchValue({
+          name: ownerFromRest.name
+        });
+      });
   }
 
   save() {
     const owner = this.ownerForm.value;
     owner.id = this.id;
-    this.ownerService.updateOwner(owner);
-    // this.ownerForm.reset();
-    // this.router.navigateByUrl('/owners');
+    this.ownerService.updateOwner(owner)
+      .subscribe(() => {
+        this.router.navigateByUrl('/owners');
+      });
   }
 }

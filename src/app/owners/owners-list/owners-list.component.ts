@@ -15,13 +15,21 @@ export class OwnersListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ownerService.getOwners().subscribe(listOfOwners => {
-      this.owners = listOfOwners;
-    });
+    this.refresh();
+  }
+
+  refresh() {
+    this.ownerService.getOwners()
+      .subscribe(listOfOwners => {
+        this.owners = listOfOwners;
+      });
   }
 
   delete(id: number) {
-    this.ownerService.deleteOwner(id);
+    this.ownerService.deleteOwner(id)
+      .subscribe(() => {
+        this.refresh();
+      });
     // this.owners = this.ownerService.getOwners();
   }
 }
