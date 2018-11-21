@@ -1,9 +1,24 @@
-<button routerLink="/owners">Back</button>
-<h1>Owner Details</h1>
-<div *ngIf="owner">
-  <h2>{{owner.id}}</h2>
-  <h3>{{owner.name}}</h3>
-</div>
-<div *ngIf="!owner">
-  <h2>Owner not found.</h2>
+<div class="container col-6">
+  <div class="row">
+    <button class="btn btn-secondary mt-3" routerLink="/owners">Back</button>
+  </div>
+
+  <div class="text-center mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h1>Owner Details</h1>
+      </div>
+      <div class="card-body">
+        <div *ngIf="owner">
+          <h2>ID: </h2>
+          <p>{{owner.id}}</p>
+          <h3>Name: </h3>
+          <p>{{owner.name}}</p>
+        </div>
+        <div *ngIf="!owner">
+          <h2>Owner not found.</h2>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

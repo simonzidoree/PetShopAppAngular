@@ -1,11 +1,17 @@
-<button routerLink="/owners">Back</button>
+<div class="container col-6">
+  <div class="row">
+    <button class="btn btn-secondary mt-3" routerLink="/owners">Back</button>
+  </div>
 
-<form [formGroup]="ownerForm" (ngSubmit)="save()">
 
-  <label>
-    Owner Name:
-    <input type="text" formControlName="name">
-  </label>
+  <div class="justify-content-center mt-5">
+    <form [formGroup]="ownerForm" (ngSubmit)="save()">
 
-  <button type="submit">Save</button>
-</form>
+      <label for="nameForm">Owner Name:</label>
+      <input type="text" class="form-control" id="nameForm" formControlName="name" placeholder="Enter an owner name">
+
+      <button type="submit" class="btn btn-primary btn-block mt-2">Save</button>
+    </form>
+
+  </div>
+</div>
