@@ -11,7 +11,8 @@ import {Router} from '@angular/router';
 export class OwnerAddComponent implements OnInit {
 
   ownerForm = new FormGroup({
-    name: new FormControl('')
+    firstName: new FormControl(''),
+    lastName: new FormControl('')
   });
 
   constructor(private ownerService: OwnerService,

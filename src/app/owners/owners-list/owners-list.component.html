@@ -1,6 +1,6 @@
 <div class="container col-10">
   <div class="row">
-    <button class="btn btn-primary mt-1" routerLink="/owner-add">Add Owner</button>
+    <button class="btn btn-primary mt-3" routerLink="/owner-add">Add Owner</button>
   </div>
 
   <div class="row" *ngIf="!owners">
@@ -16,7 +16,7 @@
           ID - {{owner.id}}
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{owner.name}}</h5>
+          <h5 class="card-title">{{owner.firstName}} {{owner.lastName}}</h5>
 
           <div class="btn-toolbar justify-content-between" role="toolbar">
             <div class="btn-group" role="group">

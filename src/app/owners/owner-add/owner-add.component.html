@@ -7,8 +7,13 @@
   <div class="justify-content-center mt-5">
     <form [formGroup]="ownerForm" (ngSubmit)="save()">
 
-      <label for="nameForm">Owner Name:</label>
-      <input type="text" class="form-control" id="nameForm" formControlName="name" placeholder="Enter an owner name">
+      <label for="firstNameForm">First Name:</label>
+      <input type="text" class="form-control" id="firstNameForm" formControlName="firstName"
+             placeholder="Enter owners first name">
+
+      <label class="mt-2" for="lastNameForm">Last Name:</label>
+      <input type="text" class="form-control" id="lastNameForm" formControlName="lastName"
+             placeholder="Enter owners last name">
 
       <button type="submit" class="btn btn-primary btn-block mt-2">Save</button>
     </form>

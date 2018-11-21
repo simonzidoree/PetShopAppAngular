@@ -1,4 +1,5 @@
 export class Owner {
   id: number;
-  name: string;
+  firstName: string;
+  lastName: string;
 }

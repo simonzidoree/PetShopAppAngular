@@ -13,7 +13,8 @@ export class OwnerUpdateComponent implements OnInit {
   id: number;
 
   ownerForm = new FormGroup({
-    name: new FormControl('')
+    firstName: new FormControl(''),
+    lastName: new FormControl('')
   });
 
   constructor(private route: ActivatedRoute,
@@ -27,7 +28,8 @@ export class OwnerUpdateComponent implements OnInit {
     this.ownerService.getOwnersById(this.id)
       .subscribe(ownerFromRest => {
         this.ownerForm.patchValue({
-          name: ownerFromRest.name
+          firstName: ownerFromRest.firstName,
+          lastName: ownerFromRest.lastName
         });
       });
   }
