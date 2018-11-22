@@ -8,10 +8,14 @@ import {WelcomeComponent} from './welcome/welcome.component';
 import {AppRoutingModule} from './app-routing.module';
 import {OwnerDetailsComponent} from './owners/owner-details/owner-details.component';
 import {OwnerAddComponent} from './owners/owner-add/owner-add.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {OwnerUpdateComponent} from './owners/owner-update/owner-update.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ButtonsModule, ProgressbarModule} from 'ngx-bootstrap';
+import {LoginComponent} from './login/login.component';
+import {OwnerService} from './shared/services/owner.service';
+import {AuthenticationService} from './shared/services/authentication.service';
+import {AuthGuard} from './shared/guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -21,17 +25,23 @@ import {ButtonsModule, ProgressbarModule} from 'ngx-bootstrap';
     WelcomeComponent,
     OwnerDetailsComponent,
     OwnerAddComponent,
-    OwnerUpdateComponent
+    OwnerUpdateComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
     ButtonsModule.forRoot(),
     ProgressbarModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AuthenticationService,
+    OwnerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
